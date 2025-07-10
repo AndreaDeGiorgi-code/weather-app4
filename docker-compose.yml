@@ -1,0 +1,22 @@
+version: '3.8'
+
+# Definisce i servizi che compongono l'applicazione
+services:
+  # Nome del servizio
+  weather-app:
+    # Configurazione per costruire l'immagine Docker
+    build:
+      # Contesto di costruzione: la directory corrente
+      context: .
+      # Nome del Dockerfile da utilizzare
+      dockerfile: Dockerfile
+    # Mappatura delle porte tra il contenitore e l'host
+    ports:
+      # Mappa la porta 8080 del contenitore alla porta 8080 dell'host
+      - "8080:8080"
+    # Definizione delle variabili d'ambiente per il contenitore
+    environment:
+      # Imposta il profilo attivo di Spring (in questo caso "prod")
+      - SPRING_PROFILES_ACTIVE=prod
+      # Definisce la chiave API necessaria per l'applicazione (sostituisci con la tua chiave)
+      - API_KEY=YOUR_API_KEY # Sostituisci con la tua API Key
